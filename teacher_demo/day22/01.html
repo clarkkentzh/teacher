@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	
+	/*
+	 @str: 翻转的字符串
+	 @char: 指定分割的字符
+	 "HELLO WORLD GOOGLE"
+	*/
+	function reverse(str, char){
+		return str.split(char).reverse().join(char);
+	}
+
+	console.log(reverse("HELLO WORLD GOOGLE!", " "));
+
+
+
+	//"    hello world   "
+	function trim(str){
+		var len = str.length;
+		var start, end;
+
+		for (var i = 0; i < len; i++){
+			if (str[i] != ' '){
+				break;
+			}
+		}
+		start = i;
+
+		for (var i = len - 1 ; i >= 0 ; i--){
+			if (str[i] != ' '){
+				break;
+			}
+		}
+		end = i + 1;
+
+		return str.slice(start,end);
+	}
+
+	console.log("[" + trim("hello world") + "]");
+</script>
+	
+</body>
+</html>

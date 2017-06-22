@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		.list {
+			border: 1px solid gray;
+			width: 600px;
+			margin: 50px auto;
+		}
+
+		.list li div {
+			height: 100px;
+			background: lightblue;
+			display: none;
+		}
+
+		.list li div.show {
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+
+
+<ul class="list">
+	<li>
+		<h3>标题部分</h3>
+		<div>
+			内容部分
+		</div>
+	</li>
+	<li>
+		<h3>标题部分</h3>
+		<div>
+			内容部分
+		</div>
+	</li>
+	<li>
+		<h3>标题部分</h3>
+		<div>
+			内容部分
+		</div>
+	</li>
+	<li>
+		<h3>标题部分</h3>
+		<div>
+			内容部分
+		</div>
+	</li>
+</ul>
+
+
+<script src="../js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+
+/*		$(".list li").hover(function(){
+			$(this).find("div").addClass("show");
+		}, function(){
+			$(this).find("div").removeClass("show");
+		});
+
+*/		$(".list li").hover(function(){
+			$(this).find("div").slideDown(300);
+		}, function(){
+			$(this).find("div").slideUp(300);
+		});
+
+
+
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+</head>
+<body>
+<script>
+
+
+    var str = "hello world\nhello world\nhello world";
+    console.log(str);
+
+    //m用于匹配多行
+    var found = str.match(/^hello world$/mg);
+    console.log(found);
+</script>
+
+</body>
+</html>

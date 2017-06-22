@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+    <button id="btn">点击</button>
+
+    <script type="text/javascript">
+        var btn = document.getElementById("btn"); //通过id得到DOM对象
+        function handler() {
+            console.log("I am btn...");
+            removeEvent(btn, "click", handler);
+        }
+        addEvent(btn, "click", handler);
+
+
+        //兼容浏览器的事件添加、移除函数
+        //addEvent事件添加
+        //@dom, 要添加事件DOM对象
+        //@eventType,要添加的事件类型（名称）
+        //@handler, 要注册的事件处理函数
+        function addEvent(dom, eventType, handler) {
+            if (dom.addEventListener) {
+                dom.addEventListener(eventType, handler, false);
+            } else if (dom.attachEvent) {
+                dom.attachEvent("on" + eventType, handler);
+            } else {
+                //DOM0级
+                // dom.onclick = handler;
+                dom["on" + eventType] = handler;
+            }
+        }
+
+
+        function removeEvent(dom, eventType, handler) {
+            if (dom.removeEventListener) {
+                dom.removeEventListener(eventType, handler, false);
+            } else if (dom.detachEvent) {
+                dom.detachEvent("on" + eventType, handler);
+            } else {
+                //DOM0级
+                dom["on" + eventType] = null;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

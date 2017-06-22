@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数</title>
+</head>
+<body>
+
+<script>
+    function Person(name){
+        this.name = name;
+    }
+
+    Person.prototype.getName = function () {
+        return this.name;
+    };
+
+
+    //类似于静态方法，直接构造函数访问，无法通过对象访问
+    Person.fun = function(){
+        console.log("Person's function");
+    };
+    Person.a = 10;
+
+
+    var one = new Person('lisi');
+    console.log(one.getName());
+
+
+    //必须通过Person直接访问
+    Person.fun();
+    console.log(Person.a);
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

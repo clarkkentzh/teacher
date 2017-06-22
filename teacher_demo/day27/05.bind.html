@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>自定义bind函数</title>
+  </head>
+  <body>
+
+    <script>
+
+    /*
+    自定义bind
+    @fn, 要绑定那个函数或方法
+    @context, 绑定的执行环境
+    */
+    function bind(fn,context) {
+      var oldArg = Array.prototype.slice.call(arguments,2) ;//1,2,3
+      return function(){
+        //最终参数的拼接
+        var newArg = oldArg.concat(Array.prototype.slice.call(arguments,0));
+        return fn.apply(context, newArg);
+      };
+    }
+
+    function test() {
+      console.log(this);
+      console.log(arguments);//伪数组，不具备数组中的各种方法
+    }
+
+    var obj = {
+      data: 0
+    };
+
+    var newTest = bind(test,obj,1,2,3,4);
+    newTest(40,50,60);
+
+
+
+    </script>
+
+  </body>
+</html>

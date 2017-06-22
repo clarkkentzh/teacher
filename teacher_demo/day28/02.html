@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>函数</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      var obj = {name: 'lisi', age: 10};
+
+
+      /*
+      给函数传递的参数：复制传递，引用复制传递
+      */
+
+      /*
+       @stu, 一个对象
+       引用复制的传参方式
+      */
+      function test(stu){
+        stu.score = 98;
+        console.log(stu);
+      }
+
+      test(obj);
+      console.log(obj);//obj被改变
+
+
+      //复制传递，参数
+      function test1(value){
+        value++;
+        console.log(value);
+      }
+      var num = 10;
+      test1(num);
+      console.log(num);//num不变
+
+
+
+    </script>
+
+  </body>
+</html>

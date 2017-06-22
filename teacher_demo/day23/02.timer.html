@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>钟表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .clock {
+            width: 600px;
+            height: 600px;
+            margin: 20px auto;
+
+            background: url("./clock-img/clock.jpg");
+            position: relative;
+        }
+
+        .clock > div {
+            width: 30px;
+            height: 600px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -15px;
+        }
+
+        .hour {
+            background: url("./clock-img/hour.png");
+        }
+
+        .mins {
+            background: url("./clock-img/minute.png");
+        }
+
+        .secs{
+            background: url("./clock-img/second.png");
+        }
+    </style>
+</head>
+<body>
+
+<div class="clock">
+    <div class="hour"></div>
+    <div class="mins"></div>
+    <div class="secs"></div>
+</div>
+
+<script>
+
+    var clock = document.getElementsByClassName("clock")[0];
+    var hour  = clock.children[0];
+    var mins = clock.children[1];
+    var secs = clock.children[2];
+
+    window.setInterval(function () {  
+        var now = new Date();
+
+        var mills = now.getMilliseconds();//获得当前的毫秒数0-999
+
+        //角度计算，需要考虑小数部分
+        var s = now.getSeconds() + mills / 1000;
+
+        var m = now.getMinutes() + s / 60;
+
+        var h = now.getHours() + m / 60;
+
+
+        hour.style.transform = "rotate(" + h * 30 + "deg)";
+        mins.style.transform = "rotate(" + m * 6 + "deg)";
+        secs.style.transform = "rotate(" + s * 6 + "deg)";
+    },10);
+
+
+</script>
+
+</body>
+</html>

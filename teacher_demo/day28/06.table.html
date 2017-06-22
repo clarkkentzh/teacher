@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>定时器节流</title>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      border: 1px solid gray;
+      border-collapse: collapse;
+      width: 500px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    tr,td,th {
+      border: 1px solid gray;
+    }
+
+    </style>
+  </head>
+  <body>
+
+    <button id="start">开始生成表格</button>
+    <button id="btn">其他操作</button>
+
+    <table id="message">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script src="./jquery-3.0.0.min.js"></script>
+    <script type="text/javascript">
+
+    $("#btn").click(function () {
+      alert("点击了按钮");
+    });
+
+    var tb = $("#message tbody");
+
+    /*
+    $("#start").click(function(){
+      //除非所有的数据添加完毕，否则页面无法响应任何事件！！！！
+      for (var i = 0; i < 100000; i++){
+          $("<tr><td>赵四</td><td>38</td><td>男</td></tr>").appendTo(tb);
+      }
+    });
+    */
+
+    $("#start").click(function(){
+      var num = 0;
+      function add(){
+          $("<tr><td>赵四</td><td>38</td><td>男</td></tr>").appendTo(tb);
+          if (num++ >= 100000){
+            return;
+          }
+          //使用了定时器进行了节流
+          setTimeout(add,0);
+      }
+      add();
+    });
+
+
+    /*
+    什么是节流？
+    为什么要节流？
+    如何实现节流？
+    */
+
+
+
+    </script>
+  </body>
+</html>

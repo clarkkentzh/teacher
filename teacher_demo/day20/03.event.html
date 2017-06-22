@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>事件</title>
+</head>
+
+<body>
+
+    <!--属性方式添加事件  -->
+    <button onclick="alert('hello!');">点我</button>
+    <button id="btn1">点我</button>
+
+
+    <script src="./jquery-3.0.0.min.js"></script>
+    <script type="text/javascript">
+        //btn1是DOM对象，不是jQuery对象
+        var btn1 = document.querySelector("#btn1");
+        // console.log(btn1);
+        // console.log($("#btn1"));
+
+
+        //DOM0添加事件
+        btn1.ondblclick = function() {
+            console.info("double click  1...");
+
+            btn1.ondblclick = null; //解除绑定
+        };
+
+        //DOM0级对同一个事件只能注册一个函数，最后一个有效
+        // btn1.ondblclick = function() {
+        //     console.info("double click  2...");
+        // };
+
+        btn1.onmouseover = function() {
+            console.info("over me...");
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>内置方法,bind</title>
+  </head>
+  <body>
+
+    <button id="btn1">点击按钮1</button>
+    <button id="btn2">点击按钮2</button>
+
+    <script type="text/javascript">
+
+      var btn1 = document.getElementById("btn1");
+      var btn2 = document.getElementById("btn2");
+      btn1.data = 10;
+      btn2.data = 11;
+
+      var obj = {
+        data: 100,
+        handler: function(event){
+          console.log(event.target);
+          console.log(this.data);
+        }
+      };
+
+      //将obj.handlder的执行环境绑定到btn上即在绑定的函数内部this===btn
+      //返回的newHandler，就是绑定了执行环境的新函数
+      var newHandler = obj.handler.bind(btn1);
+
+      // newHandler();//没有传递参数，代码报错
+
+
+      //在触发事件后，会自动给处理函数传递event参数
+      btn1.addEventListener('click', newHandler, false);
+      btn2.addEventListener('click', newHandler, false);
+
+    </script>
+  </body>
+</html>

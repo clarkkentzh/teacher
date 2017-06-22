@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+
+<script>
+    function  Sup(){
+        this.colors = ["red", "blue", "black"];
+        this.color = "pink";
+    }
+
+    function Sub(){
+    }
+
+    Sub.prototype = new Sup();
+
+    var one = new Sub();
+    var two = new Sub();
+
+    console.log(one.colors);//[red,blue,black]
+
+    //修改普通的变量color,相当于设置对象上的属性，并没有修改原型
+    one.color = "yellow";
+
+    //修改的是数组colors，想当于修改的是原型，因此会导致所有的实例对象都会受到影响
+    one.colors.push("green");
+
+    console.log(one);
+
+    console.log(two.color);//pink, 不受任何影响
+    console.log(two.colors);//[red, blue,black,green], 受影响
+
+</script>
+
+</body>
+</html>

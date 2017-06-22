@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组合继承</title>
+</head>
+<body>
+
+<script>
+
+    function Animal(type){
+        this.type = type;
+    }
+
+    Animal.prototype.eat = function () {
+        console.log("eat ....");
+    };
+
+    Animal.prototype.drink = function () {
+        console.log("drink ....");
+    };
+
+    /*
+    * @type,狗的品种
+    * @color, 狗的颜色
+    * */
+    function Dog(type,color){
+        Animal.call(this,type);//继承属性
+        this.color = color;
+    }
+
+    //原型链继承方法
+    Dog.prototype = new Animal("nothing");
+
+    //指定自己的构造函数
+    Dog.prototype.constructor = Dog;
+
+    //添加自己的原型方法
+    Dog.prototype.bark = function(){
+        console.log("wang wang !!!");
+    };
+
+
+    //重写了Animal中的drink方法
+    Dog.prototype.drink = function(){
+        console.log("dog drink style!!");
+    };
+
+
+    var dog1 = new Dog("泰迪", "black");
+    dog1.drink();
+    dog1.eat();
+    dog1.bark();
+//    console.log(dog1.constructor);
+
+    var dog2 = new Dog("金毛", "yellow");
+    dog2.drink();
+
+    console.log(dog2.__proto__);//自己构造函数的prototype
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义构造函数</title>
+</head>
+<body>
+
+<script>
+    //构造函数
+    function Person(name,age){
+        console.log(this);
+
+        this.name = name;
+        this.age = age;
+        this.sayHello = function () {
+            console.log("hello!!!");
+        };
+    }
+
+    //直接调用Person，那么this === window,所有的属性和方法都变成全局变量了
+    // Person('lisi', 10);
+
+    //通过new 实例化对象，this指的是创建的对象
+    var one = new Person('zhangs', 22);
+    console.log(one.name);
+
+    var two = new Person('wangwu', 20);
+    console.log(two.name);
+
+    console.log(typeof one);
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+</head>
+<body>
+
+<script>
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+    }
+
+    //是所有实例对象共有的部分
+    Person.prototype.address = "BJ";
+
+    //one,two 都是引用对象
+    var one = new Person("lisi", 10);
+    var two = new Person("lisi", 10);
+    console.log(one === two);//false,不相等
+
+
+    //three,four 相同的引用
+    var three = four = new Person("zhang", 20);
+    console.log(three === four);//true
+    three.name = "wang";
+    console.log(four.name);
+
+
+    /*****************************/
+    //当对象上属性和原型的属性同名时：访问属性时得到是对象上的而不是原型上的！！！！！
+    console.log(one.address);//BJ
+    one.address = "XA";
+    console.log(one.address);//XA
+
+</script>
+
+</body>
+</html>

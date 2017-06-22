@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>单例对象的创建</title>
+  </head>
+  <body>
+
+    <script>
+
+    //最简单的单例模式
+    var one = {
+      name: 'lisi',
+      age: 10,
+      setName: function(name){
+        this.name = name;
+      }
+    };
+
+ /*
+ 创建一个包含了私有变量和私有函数的单例对象，只能通过提供的接口访问。
+ 使用了立即函数保证只创建一个对象
+ */
+  var singleton =  (function(){
+      var privateA = 0;
+      function privateGet(){
+        return privateA;
+      }
+
+      function privateSet(value){
+        privateA = value;
+      }
+
+      return {
+        getValue:function(){
+          return privateGet();
+        },
+        setValue: function(value){
+          privateSet(value);
+        }
+      };
+    })();
+  console.log(singleton.getValue());
+  singleton.setValue(10);
+  console.log(singleton.getValue());
+
+
+  /*
+  惰性创建单例对象
+  */
+
+  var singleton2 = (function(){
+    var exist = null;
+    function Singleton(){
+      var privateA = 0;
+      function privateGet(){
+        return privateA;
+      }
+
+      function privateSet(value){
+        privateA = value;
+      }
+
+      return {
+        getValue:function(){
+          return privateGet();
+        },
+        setValue: function(value){
+          privateSet(value);
+        }
+      };
+    }
+    return {
+      getInstance:function(){
+        if (!exist){
+          exist = Singleton();//创建了对象
+        }
+        return exist;
+      }
+    };
+  })();
+
+  console.log(singleton2);
+
+  //one === two， 保证了对象的单一性，也就实现了单例
+  //只有getInstance方法被调用时，才会产生单例对象，否则没有
+  var one = singleton2.getInstance();
+  var two = singleton2.getInstance();
+
+
+
+
+
+
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px
+        }
+
+        .f {
+            height: 200px;
+            line-height:200px;
+            text-align: center;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="f">距离2017年6月7日高考倒计时<span>0天0时0分0秒</span></div>
+
+<script>
+    var f = document.getElementsByClassName("f")[0];
+    var s = f.children[0];
+
+    function  flag(value) {
+        return value > 9 ? value : "0" + value;
+    }
+
+    //倒计时的结束时间
+    var end = new Date("2017-06-07");//2017-06-07 0:0:0
+    var start;
+
+    var timer = setInterval(function(){
+        start = new Date();//获取当前的时间
+
+        var t = parseInt((end.getTime() - start.getTime()) / 1000);//时间差，s
+        if (t === 0) {
+            clearInterval(timer);
+        }
+
+
+        var  seconds =  t % 60; //得到秒
+        var  mins = parseInt(t / 60) % 60;//得到分
+        var  hours = parseInt(t / 3600) % 24;//得到小时
+        var  days = parseInt(t / 3600 / 24); //得到天
+
+        s.innerHTML = "" +  flag(days) + "天" + flag(hours)+ "时" + flag(mins) + "分" +  flag(seconds) + "秒";
+
+    }, 1000);
+
+
+</script>
+
+</body>
+</html>

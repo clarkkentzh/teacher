@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event事件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .f {
+            width: 500px;
+            height: 300px;
+            background: yellow;
+        }
+
+        .s {
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="f">
+    <div class="s"></div>
+</div>
+
+<a id="link" href="https://www.baidu.com">点击跳转</a>
+
+<script>
+    var f = document.getElementsByClassName("f")[0];
+    var s = f.children[0];
+
+    f.onclick = function(event){
+        console.log("fffffffffffff");
+        console.log(this);//f
+        console.log(event.target);//触发事件的源头元素
+    };
+
+    s.onclick = function(event){
+        console.log("sssssssssssssss");
+        console.log(this);//s
+        console.log(event.target);
+
+        //手动，停止事件传递
+        event.stopPropagation();
+    };
+
+
+    var link = document.getElementById("link");
+    link.onclick = function(event){
+        alert("a link");
+
+        //阻止某些元素的默认行为
+        event.preventDefault();
+    };
+
+
+</script>
+
+</body>
+</html>

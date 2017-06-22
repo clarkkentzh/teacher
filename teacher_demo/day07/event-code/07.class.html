@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标进入、移除事件</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.stu {
+			width: 300px;
+			margin: 0 auto;
+			border: 1px solid gray;
+
+            /*去掉表格单元格之间的间隙*/
+			border-collapse: collapse;
+			text-align: center;
+		}
+
+		.stu th,
+		.stu td {
+			border: 1px solid gray;
+			height: 50px;
+		}
+
+		.stu tr {
+			background: #cd9a5b;
+		}
+
+		.stu .new-back-color {
+			background: #ed1941;
+		}
+
+	</style>
+</head>
+<body>
+
+<table class="stu">
+	<caption><h1>学生信息</h1></caption>
+	<tr>
+		<th>姓名</th>
+		<th>年龄</th>
+		<th>性别</th>
+	</tr>
+	<tr>
+		<th>1000</th>
+		<th>20</th>
+		<th>男</th>
+	</tr>
+	<tr>
+		<th>1000</th>
+		<th>20</th>
+		<th>男</th>
+	</tr>
+	<tr>
+		<th>1000</th>
+		<th>20</th>
+		<th>男</th>
+	</tr>
+	<tr>
+		<th>1000</th>
+		<th>20</th>
+		<th>男</th>
+	</tr>
+</table>
+
+
+<div class="f"></div>
+
+<script src="../js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+
+
+   $(".stu tr").hover(function(){
+   	//鼠标进入
+
+    //通过类操作来更改样式
+   	// $(this).addClass("new-back-color");
+   	$(this).toggleClass("new-back-color");
+
+   }, function(){
+   	//鼠标离开
+   	// $(this).removeClass("new-back-color");
+   	$(this).toggleClass("new-back-color");
+   });
+
+
+    
+ 
+</script>
+	
+</body>
+</html>

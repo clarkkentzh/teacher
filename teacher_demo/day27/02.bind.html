@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>函数的执行环境</title>
+  </head>
+  <body>
+    <button id="btn">点击</button>
+
+    <script type="text/javascript">
+
+      var btn = document.getElementById("btn");
+      btn.data = 10;
+
+      var obj = {
+        data: 100,
+        handler: function(){
+          console.log(this.data);
+        }
+      };
+      obj.handler();//100
+
+      /*
+      // (1)
+      btn.addEventListener('click',obj.handler,false );//10
+      */
+
+      /*
+      //(2), 其中 (1) === (2)
+      btn.addEventListener('click',function(){
+        console.log(this.data)
+      },false );//10
+      */
+
+      //(3)
+      btn.addEventListener('click',function() {
+        //this === btn, this上下文环境
+        obj.handler();//100
+      },false );
+
+
+      //需求:不管调用谁的什么方法，都要求输出的data都是button的data
+
+    </script>
+
+  </body>
+</html>

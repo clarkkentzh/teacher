@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div class="f">111</div>
+<div class="f">222</div>
+
+<script src="./jquery-3.0.0.min.js" ></script>
+<script type="text/javascript">
+
+    //jquery ===> dom
+	console.log($(".f").get(0));//DOM
+	console.log($(".f").eq(0)); //jquery
+
+	var fs = document.getElementsByClassName("f");
+	console.log(fs[0]);
+
+    //dom ===>jquery
+	console.log($(fs[0]));
+
+
+</script>
+	
+</body>
+</html>

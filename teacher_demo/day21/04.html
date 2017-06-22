@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    //一直执行，除非手动关闭定时器
+    // 严格按照指定的延迟时间来开始下一次循环，无论代码是否执行完毕
+    //所以可能同一时刻同一个代码有多次执行
+
+    var num = 0, id;
+
+    id = setInterval(function() {
+        num++;
+        if (num == 10) {
+        	console.log("id = ", id);
+        	clearInterval(id);//清除定时器
+        }
+        console.log(num);
+    }, 1000); //1000ms
+
+
+
+    //实现倒计时功能？倒计时5s之后广告自动关闭
+
+
+    
+
+    </script>
+</body>
+
+</html>

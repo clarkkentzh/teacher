@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json的序列化和解析</title>
+</head>
+<body>
+
+<script>
+    var stu = {
+        "name": "lisi",
+        "age": "10",
+        "score": 88,
+        "hobby": ["sleep", "read", "sport"],
+        "address": {
+            "sheng": "HEBEI",
+            "city": "sjz",
+            "jiedao": ["xxx", "yyy"]
+        },
+        "married": true
+    };
+
+    //序列化,将json变成字符串, "{'name': 'ls', 'age': 10}"
+    var str = JSON.stringify(stu);
+    console.log(str);
+
+    //反序列化，解析
+    console.log(JSON.parse(str));
+
+
+
+</script>
+
+</body>
+</html>

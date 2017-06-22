@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>借用构造函数继承</title>
+</head>
+<body>
+
+<script>
+    function  Sup(num, len){
+        this.colors = ["red", "blue", "black"];
+        this.color = "pink";
+        this.num = num;
+        this.len = len;
+    }
+
+    Sup.prototype.getNum = function(){
+        return this.num;
+    };
+
+
+    function Sub(num,len,count){
+        Sup.call(this, num, len);
+        this.count = count;//添加额外的属性
+    }
+
+    var m = new Sub(10,11,12);
+    var n = new Sub(20,21,13);
+    m.colors.push("green");
+    console.log(n);
+
+</script>
+
+</body>
+</html>

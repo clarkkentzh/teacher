@@ -1,0 +1,20 @@
+{
+  "name": "lisi",
+  "age": "10",
+  "score": 88,
+  "hobby": [
+    "sleep",
+    "read",
+    "sport"
+  ],
+  "address": {
+    "sheng": "HEBEI",
+    "city": "sjz",
+    "jiedao": [
+      "xxx",
+      "yyy"
+    ]
+  },
+  "married": true
+}
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链继承</title>
+</head>
+<body>
+
+<script>
+
+    function Person(){
+        this.type = "Person";
+    }
+    Person.prototype.getType= function () {
+        return this.type;
+    };
+
+    //prototype.constructor 指的是当前构造函数
+   // console.log(Person.prototype.constructor);
+
+
+
+    function Stu (name) {
+        this.type = "Stu";
+        this.name = name;
+    }
+
+    //继承Person的方法和属性,并在都放在了prototype
+    Stu.prototype = new Person();
+    //console.log(Stu.prototype);
+
+    //添加自己的原型方法
+    Stu.prototype.getName = function(){
+        return this.name;
+    };
+
+    //由于Stu继承了Person,所以导致了Stu.constructor === Person
+    //console.log(Stu.prototype.constructor);
+
+    //指定自己的构造器
+    Stu.prototype.constructor = Stu;
+
+
+
+    var ren = new Person();
+    console.log(ren.constructor);//Person
+
+
+    var one = new Stu('ls');
+    console.log(one);
+    console.log(one.getType());
+    console.log(one.getName());
+    console.log(one.constructor);//Stu,得到自己的构造器
+    console.log(one.__proto__);//Stu,得到自己的原型
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

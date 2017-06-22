@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json数据</title>
+</head>
+<body>
+
+
+<script src="jquery-3.0.0.min.js"></script>
+<script>
+    //json?
+    //json的优点
+    //json在javascript中如何操作
+    //json VS xml?
+
+    var stu = {
+        "name": "lisi",
+        "age": "10",
+        "score": 88,
+        "hobby": ["sleep", "read", "sport"],
+        "address": {
+            "sheng": "HEBEI",
+            "city": "sjz",
+            "jiedao": ["xxx", "yyy"]
+        },
+        "married": true
+    };
+
+    for (var key in stu) {
+        console.log(stu[key]);
+    }
+
+
+    /*
+    //使用jQuery 解析xml
+    var str ="<rss version='2.0'>" +  "<name>lisi</name>" +
+        "<age>10</age>" +
+        "<score>88</score>" +
+        "<married>true</married>" + "</rss>";
+
+    var dom = $.parseXML(str);//返回的是一个dom对象
+    $dom = $(dom);//dom==>jquery
+    console.log($dom.find("name").text());
+    */
+
+    /*
+    //使用浏览器中的实验性功能，解析xml
+    var parser = new DOMParser();
+    var  doc = parser.parseFromString("<name>lisi</name><age>20</age>", "application/xml");
+    console.log(doc.getElementsByTagName("name")[0].childNodes[1].nodeValue);//lisi
+    */
+
+
+</script>
+
+</body>
+</html>

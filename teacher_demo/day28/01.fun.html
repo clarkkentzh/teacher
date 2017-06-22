@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>函数缓存</title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+    function fun(){
+      if (fun.invoke === undefined){
+        fun.invoke = 1;
+      } else {
+        fun.invoke++;
+      }
+      console.log(fun.invoke);
+    }
+
+
+
+    /*判断是否是质数
+    @num, 大于1的数
+    */
+
+    function isPrime(num){
+      if (isPrime.result === undefined){
+        isPrime.result = {};
+      }
+
+      if (isPrime.result[num] !== undefined){
+        return isPrime.result[num];
+      }
+
+      console.log("需要计算。。。。");
+
+      //运算完毕之后，需要将结果存储到对象中
+      var ret = true;
+      for (var i = 2; i < num; i++){
+        if (num % i == 0){
+          ret = false;
+        }
+      }
+
+      return isPrime.result[num] = ret;
+    }
+
+    console.log(isPrime(4));
+    console.log(isPrime(4));
+    console.log(isPrime(4));
+    console.log(isPrime(4));
+
+
+
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>高阶函数:将一个或者多个函数作为参数，返回一个具有组合功能的函数</title>
+  </head>
+  <body>
+
+    <script>
+    function even(num){
+      return (num % 2===0) ? true : false;
+    }
+
+    /*
+    功能： 返回一个和fn的返回值先相反的函数
+    */
+    function not(fn){
+      return function(){
+        return !fn.apply(null,arguments);
+      };
+    }
+
+    //odd,就是判断是否是奇数的函数
+    var odd = not(even);
+    console.log(odd(5));//true
+
+
+
+    /*
+    高阶函数作业：
+    要求：
+    1. 实现计算和的平方功能函数
+    2. 有一个计算和的函数，有一个计算平方的函数,组合实现要求1
+    */
+
+
+    </script>
+
+  </body>
+</html>

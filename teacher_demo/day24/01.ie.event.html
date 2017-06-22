@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ie事件对象</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #f {
+            height: 300px;
+            background: yellow;
+        }
+
+        #s {
+            height: 100px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div id="f">
+    f元素
+    <div id="s">s元素</div>
+</div>
+
+
+<a id="link" href="https://www.baidu.com">点击跳转</a>
+
+<script>
+
+    var f = document.getElementById("f");
+    var s = document.getElementById("s");
+
+     //低版本ie浏览器 ie9一下，处理函数中的event是没有的
+    //使用的是全局的事件对象 window.event
+    f.onclick = function (event) {
+        console.log("f click....");
+        event = event || window.event;
+        console.log(event.srcElement);//触发事件的源头，dom对象
+    };
+
+    s.onclick = function (event) {
+        console.log("s click....");
+        event = event || window.event;
+
+        //ie中取消冒泡
+        //event.cancelBubble = true;
+
+    };
+
+
+
+    var link = document.getElementById("link");
+    link.onclick = function () {
+        var event = window.event;
+        event.returnValue = false;//取消默认行为
+    };
+
+</script>
+
+</body>
+</html>

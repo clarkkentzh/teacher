@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>节点操作</title>
+</head>
+
+<body>
+
+    <!-- 此处的id, class等 称为 特性：attribute  -->
+    <div id="f" class="f">
+        <div id="s">s元素</div>
+        <div id="s1">s1元素</div>
+    </div>
+
+    <button id="btn" myattr="hello">按钮</button>
+
+    <script type="text/javascript">
+        var s = document.getElementById("s");
+        console.log(s.parentNode); //父元素
+
+
+        //兄弟元素,区分文本和元素
+        console.log(s.nextSibling); //文本节点
+        console.log(s.nextElementSibling); //标签节点
+
+
+        //子节点
+        var f = document.getElementById("f");
+        console.log(f.firstChild);
+        console.log(f.lastChild);
+        console.log(f.firstElementChild);
+
+
+        console.log(f.childNodes);
+        console.log(f.children); //元素数组
+
+        //创建元素节点
+        var span = document.createElement("span");
+        console.log(span);
+
+        //追加一个节点
+        f.appendChild(span); //添加到f的最后，参数必须是DOM对象，不可以是其他的
+
+
+        //在指定的位置添加节点
+        var span1 = document.createElement("span");
+        var s1 = document.getElementById("s1");
+        f.insertBefore(span1, s1);
+
+
+        //删除节点
+        // f.removeChild(s);
+        s.parentNode.removeChild(s);
+
+
+        //特性操作
+        var btn = document.getElementById("btn");
+        console.log(btn.getAttribute("id"));
+        console.log(btn.getAttribute("myattr"));
+
+        btn.setAttribute("myattr", "world");
+
+        btn.removeAttribute("myattr");
+
+
+
+
+        //操作css
+        f.style.backgroundColor = "yellow";
+        f.style.border = "1px solid red";
+
+        //覆盖之前所有行内style
+        f.style.cssText = "background-color:yellow;color:blue;border:1px solid red;width:500px;height:300px;text-align:center;";
+
+        // f.style.float = "left";
+        f.style.color = "blue";
+        f.style.cssFloat = "left"; //浮动使用cssFloat，你懂
+
+
+        console.log(f.style); //属性， property
+        console.log(f.id);
+        console.log(f.class); //undefined
+        console.log(f.className); //类名
+    </script>
+
+</body>
+
+</html>

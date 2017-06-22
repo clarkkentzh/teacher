@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的遍历</title>
+</head>
+<body>
+
+<script>
+    var obj = {
+        name: 'lisi',
+        age: 10,
+        getName: function () {
+            return this.name;
+        },
+        getAge: function () {
+            return this.age
+        }
+    };
+
+    //对象的遍历
+    for( var key in obj) {
+        //obj["key"] === obj.key
+        console.log(obj[key]);
+    }
+
+
+    function Person(name,age){
+        this.name  = name;
+        this.age = age ;
+    }
+
+    Person.prototype.getName = function () {
+        return this.name;
+    };
+
+    function Stu(name,age){
+        Person.call(this,name,age);
+    }
+
+    Stu.prototype = new Person();
+    Stu.prototype.constructor = Stu;
+    Stu.prototype.getAge = function(){
+        return this.age;
+    };
+
+    var one = new Stu('lisi', 10);
+    for (var key in one){
+        if (one.hasOwnProperty(key)){
+            console.log(key);//只有构造函数中添加的属性，原型上的和继承来的都没有
+        }
+    }
+
+
+
+
+
+</script>
+
+</body>
+</html>

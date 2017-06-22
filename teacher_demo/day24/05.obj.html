@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用原型</title>
+</head>
+<body>
+
+
+<script>
+    //原型方式(prototype)，实例化对象
+    function Person(name,age){
+
+        //不同属性，写在构造函数内部
+        this.name = name;
+        this.age = age;
+    }
+
+    //实例化的对象共有的部分，prototype
+    Person.prototype.sayHello = function () {
+        console.log("say Hello!");
+    };
+    console.log(Person.prototype);//prototype本身也是对象
+
+
+    //使用Person实例化对象
+    var one = new Person("lisi", 20);
+    console.log(one);
+
+    var two = new Person("zhangsan", 30);
+    console.log(two);
+
+
+
+</script>
+</body>
+</html>

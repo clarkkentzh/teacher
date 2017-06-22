@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>date</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var d = new Date(); //系统时间
+    console.log(d.getFullYear());
+    console.log(d.getMonth() + 1);
+    console.log(d.getDate());
+    console.log(d.getDay());
+
+    /*		setInterval(function(){
+    			d = new Date();//保证最新时间
+    			console.log(d.getHours(), d.getMinutes(),d.getSeconds(), d.getMilliseconds());
+    		}, 1);
+    */
+
+    console.log(d.getTime()); //ms
+    console.log("-------------");
+
+
+    //使用set方法设置
+    d.setFullYear(2000, 1, 1);
+    console.log(d.getFullYear(), d.getMonth(), d.getDate());
+
+    console.log("-------------");
+    //使用 Date()设置
+
+    d = new Date("2200-11-11  11:11:11");
+    console.log(d.getFullYear(), d.getMonth() + 1, d.getDate());
+    console.log(d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds());
+
+
+
+    //时间输出
+    d = new Date();
+    console.log(d.toDateString());
+    console.log(d.toLocaleDateString());
+    console.log(d.toTimeString());
+    console.log(d.toLocaleTimeString());
+    console.log(d.toUTCString());
+
+
+    //倒计时：天，小时，分钟，秒
+
+
+    </script>
+</body>
+
+</html>

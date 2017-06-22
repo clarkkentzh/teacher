@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+
+<script>
+
+    var name = "zhansan";
+    var stu = {
+        name : 'lisi',
+        getName : function () {
+            //对象内部，this === 对象本身
+            console.log(this.name);//lisi
+        }
+    };
+    stu.getName();
+
+    console.log(this.name);//zhansan
+
+
+
+</script>
+
+</body>
+</html>

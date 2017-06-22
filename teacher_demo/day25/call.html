@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call方法</title>
+</head>
+<body>
+
+<script>
+    var num = 10;
+    function test(){
+        console.log(this.num);
+    }
+    test();//全局调用,this值得是window
+
+
+    var obj = {
+        num: 20
+    };
+
+    test.call(obj);//在obj上去调用test，即test中的this变为了obj
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

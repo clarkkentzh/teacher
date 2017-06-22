@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数</title>
+</head>
+<body>
+
+<script>
+
+    function Person(name,age){
+        var count = 0;//定义一个私有变量
+        this.name = name;
+        this.age = age;
+        this.getCount = function () {
+            return count;
+        };
+        this.setCount = function (value) {
+            count = value;
+        };
+    }
+
+
+    var one = new Person('lisi', 10);
+    one.setCount(10);
+    console.log(one.getCount());
+
+    var two = new Person('zhangsan', 18);
+    console.log(two.getCount());//0
+
+
+
+</script>
+
+</body>
+</html>

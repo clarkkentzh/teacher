@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math方法</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+
+    console.log(Math.E);
+    console.log(Math.PI);
+
+
+    var d = Math.min(1, 2, 3, 4);
+    console.log(d);
+
+    var arr = [1, 2, 3, 4, 5];
+    d = Math.min.apply(null, arr);//等价于Math.min(1,2,3,4,5);
+    console.log(d);
+
+
+    //数值的取舍
+    console.log(Math.floor(-25.2));//-26,比原值小
+    console.log(Math.floor(25.2));//25
+
+    console.log(Math.ceil(-25.2));//-25, 比原值大
+    console.log(Math.ceil(25.2));//26, 比原值大
+
+    console.log(Math.round(-25.2));//-25
+    console.log(Math.round(25.2));//25
+
+    console.log(Math.round(-25.6));// -26
+    console.log(Math.round(25.6));// 26
+
+    //真随机，伪随机
+
+    for (var i = 0; i < 100; i++) {
+        var d = Math.random() * 10;//[0,9.9999999.....]
+        d = Math.floor(d);//[0,9]
+        console.log("d = ", d);
+    }
+
+    //产生一个【start,end】正整数，随机数, [12,22]
+    //Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)
+    function createRandom(start, end) {
+         var d = Math.floor(Math.random() * (end - start + 1) + start);
+         return d;
+    }
+
+    for (var i = 0; i < 100; i++) {
+        console.log(createRandom(12, 22));
+    }
+
+
+
+    //生成6为数字，字母混合的验证码？
+    //@num,指定生成的验证码的个数
+    function captcha(num){
+        var symbols = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d'];
+        var str = "";
+
+        for(var i = 0; i < num; i++){
+            str +=  symbols[createRandom(0, symbols.length - 1)];
+        }
+        return str;
+    }
+
+    for (var i = 0; i< 100; i++){
+        console.log(captcha(6));
+    }
+
+
+
+    //思考：编写倒计时程序，实现距离高考的天，小时，分钟，秒,需要在页面看到
+
+
+</script>
+
+</body>
+</html>

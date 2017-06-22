@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串中的正则表达式方法</title>
+</head>
+<body>
+
+<script>
+    var str = 'skjgkdjhgkjd dkjhkdh see Chapter 3.4.5.1  see Chapter 3.4.5.1';
+    var re = /see (chapter \d+(\.\d)*)/i;
+
+    //数组元素的个数，和捕获的个数有关
+    var found = str.match(re);
+    console.log(found);
+
+
+    //添加了g,注意返回值的不同
+    var re1 = /see (chapter \d+(\.\d)*)/ig;
+    var found = str.match(re1);
+    console.log(found);
+
+
+    str = "hello world  google hello  world apple baidu ";
+    var newStr = str.replace("hello", "HELLO");
+    console.log(newStr);
+
+    newStr = str.replace(/hello/g, "HELLO");
+    console.log(newStr);
+
+
+    //使用reaplace中的函数参数
+    newStr = str.replace(/(hello|world)/g, function (match, p1) {
+        //console.log("match = ", match);
+        //console.log("p1 = ", p1);
+        return p1.toUpperCase();
+    });
+
+    console.log(newStr);
+
+
+
+</script>
+
+</body>
+</html>

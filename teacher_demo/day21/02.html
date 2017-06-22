@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="lists"></ul>
+    <select id="xingzuo">
+        <option value="1">星座1</option>
+        <option value="2">星座2</option>
+        <option value="3">星座3</option>
+        <option value="4">星座4</option>
+        <option value="5">星座5</option>
+    </select>
+
+    <script type="text/javascript">
+    window.onload = function() {
+        var lists = document.getElementById("lists");
+        for (var i = 0; i < 5; i++) {
+            var li = document.createElement("li");
+            li.innerHTML = i + 1;
+            lists.appendChild(li);
+        }
+
+        var xingzuo = document.getElementById("xingzuo");
+        xingzuo.addEventListener("change", function(){
+        		var value = xingzuo.value;//原生方式获得value
+        		console.log(value);
+        }, false);
+
+
+    }
+    </script>
+</body>
+
+</html>

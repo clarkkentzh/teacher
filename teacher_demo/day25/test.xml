@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<stu>
+    <name>lisi</name>
+    <age>10</age>
+    <score>88</score>
+    <hobby>
+        <one>sleep</one>
+        <two>read</two>
+        <three>sport</three>
+    </hobby>
+</stu>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+
+<script>
+
+    function test() {
+        var a = 10;
+
+        //必须要返回一个访问函数内部变量的函数
+        return function () {
+            console.log(a);//包含对外部作用域 变量的引用,a
+        };
+    }
+
+    var ret = test();//返回值ret，就可以理解为闭包
+    ret();
+
+
+    /**************************************************/
+    function test2(){
+        count = 10;// 如果不添加var，那么变量为全局变量
+        console.log("test2: count = ", count);
+    }
+    test2();
+    console.log("global: count = ", count);
+
+    /**************************************************/
+
+    //尽量减少全局变量的定义，全局资源有限
+    function test3(){
+        var num = 0;//是用于计数功能,私有化的变量
+
+        function add(){
+            num++;
+            return num;
+        }
+
+        function del(){
+            num--;
+            return num;
+        }
+
+        return [add,del];//返回两个函数
+
+    }
+    ret = test3();
+    console.log(ret[0]);
+    console.log(ret[1]);
+
+
+    /**************************************************/
+
+    //闭包可以根据不同的参数，返回不同的内容
+    /*
+    * @tag,标签名称,双标签
+    * */
+    function test4(tag){
+
+        return function(arg){
+            return "<" + tag + ">" + arg + "</" + tag + ">";
+        };
+    }
+
+
+    ret = test4("h1");
+    console.log(ret("helloworlrd"));
+    console.log(ret("file edit"));
+
+    ret = test4("div");
+    console.log(ret("helloworlrd"));
+
+
+    /**************************************************/
+
+
+    /*
+    *  查看javascript的内存回收机制？？？
+    *  阅读javascript高级程序设计的13.3.2 关于ie浏览器的事件对象
+    *  结合原生和jQuery中的event学习
+    * */
+
+
+
+
+</script>
+
+</body>
+</html>

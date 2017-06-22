@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>replace</title>
+</head>
+<body>
+
+
+<!--
+关键字： 习近平 李克强 薄熙来 周永康
+<mark>习近平们</mark>
+-->
+<textarea  id="txt" cols="80" rows="10"></textarea><br>
+<button id="btn">点击高亮关键字</button>
+<p id="mod"></p>
+
+
+<script src="./jquery-3.0.0.min.js"></script>
+<script>
+    $("#btn").click(function (event) {
+
+        var leaders = ["习近平", "李克强", "薄熙来", "周永康"];
+
+        // (习近平|李克强)
+        var pattern = new RegExp("(" + leaders.join('|') + ")", 'g');
+
+        var content = $("#txt").val();
+        content = content.replace(pattern, function(match, p1){
+            return "<mark>" + p1 + "</mark>";
+        });
+
+        $("#mod").html(content);
+    });
+
+</script>
+</body>
+</html>

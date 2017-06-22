@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+</head>
+<body>
+
+<script>
+
+    //直接定义
+    var pat = /hello/i;
+    console.log(pat.test("HELLOworld"));
+
+
+    //构造函数
+    var pat1 = new RegExp("hello" + "world", 'i');
+    console.log(pat1.test("HELLOworld"));
+
+    console.log("*******************");
+
+    //测试常见符号
+    console.log(/[az]/.test("hello world"));
+    console.log(/[a-z]/.test("hello world"));
+    console.log(/[A-Za-z]/.test("hello world"));
+    console.log(/[abc]/.test("hello aworld"));
+    console.log(/[0-9]/.test("hello  aworld"));
+    console.log(/\d/.test("hello  2 aworld"));
+    console.log(/\D/.test("123c321"));
+    console.log(/\s/.test("123c\r321"));
+
+    console.log(/[^abc]/.test("abca2bcbac"));
+
+    //严格匹配
+    console.log(/^helloworld$/.test("helloworlda"));//false
+    console.log(/^helloworld/.test("helloworlda"));//true
+    console.log(/helloworld$/.test("xxxyyyyhelloworld"));//true
+
+    //元字符 * + ? |
+
+    // * 前边的字符出现 >= 0次
+    console.log(/a*/.test("a"));//true
+    console.log(/a*/.test("aaa"));//true
+    console.log(/a*/.test(""));//true
+    console.log(/a*bc/.test("bc"));//true
+    console.log(/a*bc/.test("abc"));//true
+    console.log(/a*bc/.test("aabc"));//true
+
+    // + 前边的字符出现 >= 1次
+    console.log(/a+bc/.test("bc"));//false
+    console.log(/a+bc/.test("aaaabc"));//true
+
+    // ? 0或者1次
+    console.log(/a?bc/.test("xxxbc"));//true
+    console.log(/a?bc/.test("bca"));//true
+
+
+    // | 或
+    console.log(/1abc|23/.test("123"));//true
+    console.log(/abc|123/.test("abc123"));//true
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

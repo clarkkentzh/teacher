@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包应用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .point {
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .point span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin-right: 10px;
+            cursor: pointer;
+            background: lightgray;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="point"></div>
+<h1>小点<span id="s"></span>被点击</h1>
+
+
+<script src="./jquery-3.0.0.min.js"></script>
+<script>
+    var point = document.getElementsByClassName("point")[0];
+    var s = document.getElementById("s");
+
+    //添加小圆点
+    for (var i = 0; i < 5; i++){
+        var span = document.createElement("span");
+        span.innerHTML = i + 1;
+        point.appendChild(span);
+    }
+
+    //获得添加之后的小圆点
+    var spans = point.children;
+
+    //使用循环添加事件
+    for (var i = 0, len = spans.length; i < len ; i++){
+
+        /*
+        //问题代码
+        spans[i].onclick = function(){
+            //闭包,导致i最后都是5
+            s.innerHTML = i;
+        }
+        */
+
+
+       /*
+        //第一种解决方法，使用立即函数
+        (function(i){
+            console.log("i = ", i);
+            spans[i].onclick = function(){
+                s.innerHTML = i + 1;
+            }
+        })(i);
+        */
+
+
+        /*
+        //第二种方法，自定一个属性
+        spans[i].index = i;//给每个dom节点都添加了一个index属性，而且属性的值和位置对应
+        spans[i].onclick = function(){
+            s.innerHTML = this.index + 1;
+        }
+        */
+
+
+        //第三种方法，使用jQuery中的event.data
+        $(spans[i]).click(i, function(event){
+            s.innerHTML = event.data + 1;
+        });
+
+    }
+</script>
+
+
+</body>
+</html>

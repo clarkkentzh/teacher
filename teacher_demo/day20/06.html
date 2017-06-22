@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>节点操作</title>
+</head>
+
+<body>
+
+    <button id="btn">按钮</button>
+    <div class="f"></div>
+    <div class="f"></div>
+
+    <div id="box">
+        <div class="f"></div>
+        <div class="f"></div>
+    </div>
+
+    <script type="text/javascript">
+        var btn = document.getElementById("btn");
+        //nodeType属性判断节点的类型
+        console.log(btn.nodeType); //1
+        console.log(document.nodeType); //9
+
+        console.log(document.getElementsByClassName("f")); //返回一个DOM对象数组
+        console.log(document.getElementsByTagName("div")); //返回一个DOM对象数组
+
+        var box = document.getElementById("box");
+        console.log(box.getElementsByTagName("div")); //限定了查找范围
+        console.log(box.getElementsByClassName("f")); //返回一个DOM对象数组,限定范围
+    </script>
+</body>
+
+</html>
